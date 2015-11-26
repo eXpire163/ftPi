@@ -1,0 +1,17 @@
+{
+  "id": "d2b9e69b-7e7f-4b52-945d-5ceb6ac98462",
+  "user": "3aeca51f-a897-4155-965d-1c2869847b0c",
+  "host": "192.168.188.10",
+  "port": 3569,
+  "secret": "TMy.vUl5",
+  "permissions": {
+    "TMy.vUl5": [
+      "protocol:component",
+      "protocol:runtime",
+      "protocol:graph",
+      "protocol:network",
+      "component:getsource",
+      "component:setsource"
+    ]
+  }
+}
