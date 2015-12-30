@@ -46,7 +46,7 @@ Optional
 # TODOs:
 
 - Upload the code
-- prey for ne licence / patent problems
+- pray for ne licence / patent problems
 - write a guide
 - link all stuff
 - clean the code
