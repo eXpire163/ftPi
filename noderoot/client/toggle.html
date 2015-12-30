@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+   <head>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+</head>
+<style>
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+</style>
+     
+   </head>
+   <body>
+     
+<div class="unselectable">
+
+<table id="rctable" height="80%">
+
+</table>
+
+
+<form>
+	<fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
+        <legend>Motor 1:</legend>
+        <input name="rct1" id="1lg" value="on"  type="radio">
+        <label for="1lg">&lt;</label>
+        <input name="rct1" id="1ls" value="off" type="radio" checked="checked">
+        <label for="1ls">off</label>
+        <input name="rct1" id="1rg" value="other" type="radio">
+        <label for="1rg">&gt;</label>
+    </fieldset>
+    <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
+        <legend>Motor 2:</legend>
+        <input name="rct2" id="2lg" value="on"  type="radio">
+        <label for="2lg">&lt;</label>
+        <input name="rct2" id="2ls" value="off" type="radio" checked="checked">
+        <label for="2ls">off</label>
+        <input name="rct2" id="2rg" value="other" type="radio">
+        <label for="2rg">&gt;</label>
+    </fieldset>
+	<fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
+        <legend>Motor 3:</legend>
+        <input name="rct3" id="3lg" value="on"  type="radio">
+        <label for="3lg">&lt;</label>
+        <input name="rct3" id="3ls" value="off" type="radio" checked="checked">
+        <label for="3ls">off</label>
+        <input name="rct3" id="3rg" value="other" type="radio">
+        <label for="3rg">&gt;</label>
+    </fieldset>
+	<fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
+        <legend>Motor 4:</legend>
+        <input name="rct4" id="4lg" value="on"  type="radio">
+        <label for="4lg">&lt;</label>
+        <input name="rct4" id="4ls" value="off" type="radio" checked="checked">
+        <label for="4ls">off</label>
+        <input name="rct4" id="4rg" value="other" type="radio">
+        <label for="4rg">&gt;</label>
+    </fieldset>
+</form>
+
+
+
+	
+</div>
+
+<div style="display: none;">
+<textarea rows="10" cols="50" id="tx" height="200px"></textarea> 
+ <p>Open your browser's JavaScript console to see what's happening (hit F12).</p>
+      <button onclick='sendText();'>Send Text Message</button>
+      <button onclick='sendBinary();'>Send Binary Message</button>
+	  
+</div>
+
+       <script src="./js/fischerSock.js"></script>
+       <script src="./js/client.js"></script>
+   </body>
+</html>

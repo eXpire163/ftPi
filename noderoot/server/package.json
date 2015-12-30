@@ -1,0 +1,17 @@
+{
+  "name": "killerapp",
+  "version": "0.0.0",
+  "description": "killerapp",
+  "main": "server.js",
+  "author": {
+    "name": "kc",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "^4.12.3",
+    "serve-static": "^1.9.2",
+    "forever": "^0.14.1",
+    "socket.io": "^1.3.5",
+     "mysql": "^2.6.1"
+  }
+}
