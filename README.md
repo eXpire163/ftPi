@@ -41,6 +41,10 @@ Optional
 - [GoJS](http://gojs.net/latest/samples/flowchart.html) for Programming UI
 - mjpg_streamer for webcam access
 
+# Status: 
+
+- I've got the first working edition (for developer or linux gurus only) XD
+![alt tag](http://hellofheaven.org/_staticImages/ftpi_preview.JPG)
 
 
 # TODOs:
