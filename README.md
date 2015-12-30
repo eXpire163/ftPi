@@ -29,8 +29,8 @@ Cheap and easy to use alternativ to the expensive fischertechnik txt controller.
 
 Optional
 
-USB Powerbank - for mobile Raspberry power supply
-7.4 V Lipo - for motor power (you can use the powerbank instread, but that makes it a bit weak - fischertechnik requires 6/9 V for the motors)
+- USB Powerbank - for mobile Raspberry power supply
+- 7.4 V Lipo - for motor power (you can use the powerbank instread, but that makes it a bit weak - fischertechnik requires 6/9 V for the motors)
 
 ### Software
 
