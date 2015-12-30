@@ -24,8 +24,8 @@ Cheap and easy to use alternativ to the expensive fischertechnik txt controller.
 ### Hardware
 
 - Raspberry Pi 1 (can be newer)
-- Arduino Motor and Stepper Head (can be stacked for more motors - 4 DC or 2 Stepper)
-- (upcomming) Arduino Servo Head (supports up to 16 servos)
+- Arduino Motor and Stepper Head (can be stacked for more motors - 4 DC or 2 Stepper) [link](https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi/overview)
+- (upcomming) Arduino Servo Head (supports up to 16 servos) [link](https://learn.adafruit.com/adafruit-16-channel-pwm-servo-hat-for-raspberry-pi/overview)
 
 Optional
 
@@ -38,7 +38,7 @@ Optional
 - NodeJS as FrontEnd Server
 - Python Autobahn as Backend Server
 - Websocket communication 
-- GoJS for Programming UI
+- [GoJS](http://gojs.net/latest/samples/flowchart.html) for Programming UI
 - mjpg_streamer for webcam access
 
 
