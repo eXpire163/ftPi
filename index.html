@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Ftpi by eXpire163</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/eXpire163/ftPi">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/eXpire163/ftPi/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/eXpire163/ftPi/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Ftpi</h1>
+          <p>fischertechnik meets raspberry pi</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/eXpire163">eXpire163</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="ftpi" class="anchor" href="#ftpi" aria-hidden="true"><span class="octicon octicon-link"></span></a>ftPi</h1>
+
+<p>This is yet a preannouncement of my fischertechnik raspberry mix project.</p>
+
+<h2>
+<a id="the-idea" class="anchor" href="#the-idea" aria-hidden="true"><span class="octicon octicon-link"></span></a>the idea</h2>
+
+<p>Cheap and easy to use alternativ to the expensive fischertechnik txt controller.</p>
+
+<h2>
+<a id="what-we-want" class="anchor" href="#what-we-want" aria-hidden="true"><span class="octicon octicon-link"></span></a>what we want</h2>
+
+<h3>
+<a id="hardware" class="anchor" href="#hardware" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hardware</h3>
+
+<ul>
+<li>Controlling motors (at least 4, maybe more)</li>
+<li>reading switches (digital read, at least 4)</li>
+<li>reading sensors (analog read)</li>
+</ul>
+
+<h3>
+<a id="software" class="anchor" href="#software" aria-hidden="true"><span class="octicon octicon-link"></span></a>Software</h3>
+
+<ul>
+<li>flowbased Development ( Known from fischertechnik software)</li>
+<li>webbased controlling (eg: like rc remote , or Smartphone gyro)</li>
+<li>fpv mode (Support for on Board Webcam with live stream)</li>
+</ul>
+
+<h2>
+<a id="used-components" class="anchor" href="#used-components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Used Components</h2>
+
+<h3>
+<a id="hardware-1" class="anchor" href="#hardware-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hardware</h3>
+
+<ul>
+<li>Raspberry Pi 1 (can be newer) (Raspberry Zero @ 5$ will probably work, but without fpv/webcam)</li>
+<li>Arduino Motor and Stepper Head (can be stacked for more motors - 4 DC or 2 Stepper) <a href="https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi/overview">link</a>
+</li>
+<li>(upcomming) Arduino Servo Head (supports up to 16 servos) <a href="https://learn.adafruit.com/adafruit-16-channel-pwm-servo-hat-for-raspberry-pi/overview">link</a>
+</li>
+</ul>
+
+<p>Optional</p>
+
+<ul>
+<li>USB Powerbank - for mobile Raspberry power supply</li>
+<li>7.4 V Lipo - for motor power (you can use the powerbank instread, but that makes it a bit weak - fischertechnik requires 6/9 V for the motors)</li>
+</ul>
+
+<h3>
+<a id="software-1" class="anchor" href="#software-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Software</h3>
+
+<ul>
+<li>Raspbean Wheezy (newer not tested yet)</li>
+<li>NodeJS as FrontEnd Server</li>
+<li>Python Autobahn as Backend Server</li>
+<li>Websocket communication </li>
+<li>
+<a href="http://gojs.net/latest/samples/flowchart.html">GoJS</a> for Programming UI</li>
+<li>mjpg_streamer for webcam access</li>
+</ul>
+
+<h1>
+<a id="status" class="anchor" href="#status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status:</h1>
+
+<ul>
+<li>I've got the first working edition (for developer or linux gurus only) XD
+<img src="http://hellofheaven.org/_staticImages/ftpi_preview.JPG" alt="alt tag">
+</li>
+</ul>
+
+<h1>
+<a id="todos" class="anchor" href="#todos" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODOs:</h1>
+
+<ul>
+<li>Upload the code</li>
+<li>pray for ne licence / patent problems</li>
+<li>write a guide</li>
+<li>link all stuff</li>
+<li>clean the code</li>
+<li>publish in ft community</li>
+<li>learn how to publish on github correctly ;)</li>
+<li>find someone fixing my typos</li>
+</ul>
+
+<p>and mutch more</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
