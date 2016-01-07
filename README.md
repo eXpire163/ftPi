@@ -1,6 +1,6 @@
 # ftPi
 
-This is yet a preannouncement of my fischertechnik raspberry mix project.
+This is yet a preannouncement of my fischertechnik raspberry mix project. Have a look at the [wiki](https://github.com/eXpire163/ftPi/wiki/usage).
 
 ## the idea
 
