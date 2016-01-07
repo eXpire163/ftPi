@@ -26,10 +26,11 @@
 
 from autobahn.twisted.websocket import WebSocketServerProtocol, WebSocketServerFactory
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
- 
-import time
+
 import atexit
 import os
+
+maxSpeed = 203;
 
 class MyServerProtocol(WebSocketServerProtocol):
 
@@ -54,8 +55,8 @@ class MyServerProtocol(WebSocketServerProtocol):
                     mh.getMotor(int(float(befehl[1]))).run(Adafruit_MotorHAT.FORWARD)
                 else:
                     mh.getMotor(int(float(befehl[1]))).run(Adafruit_MotorHAT.BACKWARD)
-                print('spped: {0}'.format(int(float(befehl[2])*204)))
-                mh.getMotor(int(float(befehl[1]))).setSpeed(int(float(befehl[2])*204))
+                print('stopped: {0}'.format(int(float(befehl[2])*maxSpeed)))
+                mh.getMotor(int(float(befehl[1]))).setSpeed(int(float(befehl[2])*maxSpeed))
             if(befehl == 'shutdown'):
                 os.system("sudo halt")
 
