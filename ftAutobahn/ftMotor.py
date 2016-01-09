@@ -50,12 +50,12 @@ class FTMotor:
             self.log('skip set {} {}'.format(nummer, tempo))
 
     def setMotor(self, nummer, direction, speed):
+        self.log('set {} {} {}'.format(nummer, direction, speed))
         num = int(float(nummer))
         dir = direction
         tempo = int(float(speed)*self.maxSpeed)
-        self.setDirection(nummer,direction)
-        self.setSpeed(nummer, speed)
-        print('set {} {} {}'.format(nummer, direction, tempo))
+        self.setDirection(num, direction)
+        self.setSpeed(num, tempo)
         pass
 
     def turnOffMotors(self):
@@ -64,17 +64,3 @@ class FTMotor:
         self.mh.getMotor(2).run(Adafruit_MotorHAT.RELEASE)
         self.mh.getMotor(3).run(Adafruit_MotorHAT.RELEASE)
         self.mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
-
-
-#ftm = FTMotor()
-#ftm.setSpeed(1 , 2.0)
-#ftm.setSpeed(1 , 2.0)
-#ftm.setDirection(1, 'left')
-#ftm.setMotor(3,'right',1.0)
-#ftm.setMotor(3,'left',1.0)
-#print ftm.getDirection(1)
-#print ftm.getDirection(2)
-#print ftm.getSpeed(1)
-#print ftm.getSpeed(2)
-
-

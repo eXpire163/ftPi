@@ -28,32 +28,46 @@ from autobahn.twisted.websocket import WebSocketServerProtocol, WebSocketServerF
 from ftMotor import FTMotor
 import RPi.GPIO as GPIO
 
-maxSpeed = 204;
-debug = True;
+maxSpeed = 204
+debug = True
 
 class FischerServer(WebSocketServerProtocol):
 
     ftm = FTMotor()
     ftm.debug = debug
-    print 'debugmode is {}'.format(debug)
+    print('debugmode is {}'.format(debug))
     ftm.maxSpeed = maxSpeed
+    GPIO.setmode(GPIO.BOARD)
+    gport = [8, 10]
 
-    def log(self, txt):
+    def doLog(self, txt):
         if self.debug:
             print(txt)
+
+    def goGPIO(self, data):
+        self.doLog("switch,{},{}".format(data, GPIO.input(data)))
+        self.sendMessage("switch,{},{}".format(data, GPIO.input(data)))
 
     def onConnect(self, request):
         # create a default object, no changes to I2C address or frequency
         print("Client connecting: {0}".format(request.peer))
+        for i in range(len(self.gport)):
+            print(self.gport)
+            print("setup: {}".format(self.gport[i]))
+            GPIO.setup(self.gport[i], GPIO.IN)
+            GPIO.add_event_detect(self.gport[i], GPIO.BOTH, callback=self.goGPIO, bouncetime=200)
+            pass
+
 
     def onOpen(self):
-        self.log("WebSocket connection open.")
+        self.doLog("WebSocket connection open.")
 
     def onMessage(self, payload, isBinary):
-        log("Text message received: {0}".format(payload.decode('utf8')))
+        self.doLog("Text message received: {0}".format(payload.decode('utf8')))
         befehl = payload.decode('utf8').split(',')
-        self.log(befehl)
+        self.doLog(befehl)
         if(len(befehl)==4):
+            print befehl
             self.ftm.setMotor(befehl[1],befehl[3],befehl[2])
 
         # echo back message verbatim
@@ -61,7 +75,16 @@ class FischerServer(WebSocketServerProtocol):
 
     def onClose(self, wasClean, code, reason):
         self.ftm.turnOffMotors()
+        for xx in range(len(self.gport)):
+            try:
+                self.doLog("removing")
+                GPIO.remove_event_detect(self.gport[xx])
+            except ValueError:
+                print("cannot remove".format())
+
         print("WebSocket connection closed: {0}".format(reason))
+
+
 
 
 if __name__ == '__main__':
@@ -73,7 +96,7 @@ if __name__ == '__main__':
 
     log.startLogging(sys.stdout)
 
-    factory = WebSocketServerFactory("ws://127.0.0.1:9000", debug=False)
+    factory = WebSocketServerFactory("ws://127.0.0.1:9000", debug=True)
     factory.protocol = FischerServer
 
     reactor.listenTCP(9000, factory)
