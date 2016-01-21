@@ -49,6 +49,7 @@ class FischerServer(WebSocketServerProtocol):
         self.sendMessage("switch,{},{}".format(data, GPIO.input(data)))
 
     def onConnect(self, request):
+        print request
         # create a default object, no changes to I2C address or frequency
         print("Client connecting: {0}".format(request.peer))
         for i in range(len(self.gport)):
@@ -71,7 +72,8 @@ class FischerServer(WebSocketServerProtocol):
             self.ftm.setMotor(befehl[1],befehl[3],befehl[2])
 
         # echo back message verbatim
-        self.sendMessage(payload)
+        if(payload != "thx"):
+            self.sendMessage(payload)
 
     def onClose(self, wasClean, code, reason):
         self.ftm.turnOffMotors()
