@@ -34,7 +34,7 @@ from twisted.web.static import File
 from autobahn.twisted.websocket import WebSocketServerFactory, \
     WebSocketServerProtocol, \
     listenWS
-
+import RPi.GPIO as GPIO
 
 class BroadcastServerProtocol(WebSocketServerProtocol):
 
@@ -59,6 +59,15 @@ class BroadcastServerFactory(WebSocketServerFactory):
     currently connected clients.
     """
 
+    def goGPIO(self, data):
+        self.doLog("switch,{},{}".format(data, GPIO.input(data)))
+        self.sendMessage("switch,{},{}".format(data, GPIO.input(data)))
+        
+    def goGPIO(self, data):
+        #self.doLog("switch,{},{}".format(data, GPIO.input(data)))
+        self.broadcast("switch,{},{}".format(data, GPIO.input(data)))
+    
+    
     def __init__(self, url, debug=False, debugCodePaths=False):
         WebSocketServerFactory.__init__(self, url, debug=debug, debugCodePaths=debugCodePaths)
         self.clients = []
@@ -73,6 +82,8 @@ class BroadcastServerFactory(WebSocketServerFactory):
     def register(self, client):
         if client not in self.clients:
             print("registered client {}".format(client.peer))
+            GPIO.setup(self.gport[i], GPIO.IN)
+            GPIO.add_event_detect(self.gport[i], GPIO.BOTH, callback=self.goGPIO, bouncetime=200)
             self.clients.append(client)
 
     def unregister(self, client):
