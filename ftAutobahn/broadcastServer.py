@@ -60,10 +60,6 @@ class BroadcastServerFactory(WebSocketServerFactory):
     """
 
     def goGPIO(self, data):
-        self.doLog("switch,{},{}".format(data, GPIO.input(data)))
-        self.sendMessage("switch,{},{}".format(data, GPIO.input(data)))
-        
-    def goGPIO(self, data):
         #self.doLog("switch,{},{}".format(data, GPIO.input(data)))
         self.broadcast("switch,{},{}".format(data, GPIO.input(data)))
     
