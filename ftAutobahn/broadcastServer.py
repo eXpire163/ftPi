@@ -79,8 +79,11 @@ class BroadcastServerFactory(WebSocketServerFactory):
         if client not in self.clients:
             print("registered client {}".format(client.peer))
             GPIO.setup(8, GPIO.IN)
+            print("setup port 8")
             GPIO.add_event_detect(8, GPIO.BOTH, callback=self.goGPIO, bouncetime=200)
+            print("activate port 8")
             self.clients.append(client)
+            print("add done")
 
     def unregister(self, client):
         if client in self.clients:
