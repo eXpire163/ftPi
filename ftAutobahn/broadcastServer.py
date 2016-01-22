@@ -120,6 +120,7 @@ if __name__ == '__main__':
     else:
         debug = False
 
+    GPIO.setmode(GPIO.BOARD)
     ServerFactory = BroadcastServerFactory
     # ServerFactory = BroadcastPreparedServerFactory
 
