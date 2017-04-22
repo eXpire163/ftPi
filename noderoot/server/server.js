@@ -18,7 +18,7 @@ var io = socket.listen(express);
 
 //neu
 
-var shell = require('shelljs');
+//var shell = require('shelljs');
 
 
 var express = require('express');
@@ -27,7 +27,7 @@ var app = express();
 var server = require('http').Server(app);
 //var io = require('socket.io')(server);
 
-var movie = require('./routes/movie');
+//var movie = require('./routes/movie');
 
 
 server.listen(8081);
@@ -35,7 +35,7 @@ console.log('Server running at http://localhost:8081/');
 console.log('this file is in /home/pi/noderoot/server/server.js');
 console.log('autostart via /etc/rc.local -> forever');
 
-app.use('/movies', movie);
+//app.use('/movies', movie);
 
 
 app.get('/admin/:cmd', function(req, res, next) {
@@ -98,3 +98,30 @@ var io = socket.listen(server);
 
 
 */
+
+//var http = require("http")
+var ws = require("nodejs-websocket")
+var fs = require("fs")
+
+
+
+var server = ws.createServer(function (connection) {
+	connection.nickname = null
+	connection.on("text", function (str) {
+		if (connection.nickname === null) {
+			connection.nickname = str
+			broadcast(str+" entered")
+		} else
+			broadcast("["+connection.nickname+"] "+str)
+	})
+	connection.on("close", function () {
+		broadcast(connection.nickname+" left")
+	})
+})
+server.listen(888)
+
+function broadcast(str) {
+	server.connections.forEach(function (connection) {
+		connection.sendText(str)
+	})
+}

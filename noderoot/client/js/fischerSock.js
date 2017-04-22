@@ -21,7 +21,7 @@ window.onload = function () {
 			}
 			add("Binary message received: " + hex);
 		}
-		socket.send("thx");
+		//socket.send("thx");
 	}
 	socket.onclose = function (e) {
 		add("Connection closed.");
