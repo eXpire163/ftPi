@@ -10,7 +10,11 @@ window.onload = function () {
 		add("Connected!");
 		isopen = true;
 	}
+	socket.on("start", function (msg, rinfo) {
+		add("Packet recieved from server: " + msg);
+	});
 	socket.onmessage = function (e) {
+		add("checkincome: "+e +" "+e.data)
 		if (typeof e.data == "string") {
 			add("in: " + e.data);
 		} else {
