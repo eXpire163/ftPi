@@ -1,4 +1,4 @@
 node_modules/
 noderoot/node_modules/
 noderoot/server/node_modules/
-
+.idea/
