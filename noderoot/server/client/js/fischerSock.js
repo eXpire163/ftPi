@@ -4,7 +4,7 @@ var ip = window.location.hostname;
 
 
 window.onload = function () {
-	socket = new WebSocket("ws://"+ip+":9000");
+	socket = new io("ws://"+ip+":3000");
 	socket.binaryType = "arraybuffer";
 	socket.onopen = function () {
 		add("Connected!");
@@ -42,12 +42,12 @@ function start(motorNumber, direction, speed) {
     if (speed == undefined) {
         speed = 1.0;
     }
-    add("start motor");
-    socket.send("start," + motorNumber + ","+speed+"," + direction);
+    add("start motor "+motorNumber);
+    socket.emit("start",  motorNumber + ","+speed+"," + direction);
 };
 //stop
 function stop(motorNumber, direction) {
 	add("stop motor");
-	socket.send("start," + motorNumber + ",0.0," + direction);
+	socket.emit("start",  motorNumber + ",0.0," + direction);
 };
 

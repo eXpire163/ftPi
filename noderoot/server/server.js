@@ -1,4 +1,43 @@
-﻿/*
+﻿var express =require('express'); 
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/client/index.html');
+});
+app.use(express.static(__dirname + '/client/'));
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+  
+	socket.on('start', function(msg){
+		console.log('start message: ' + msg);
+		socket.broadcast.emit('start',msg);
+  });
+	socket.on('stop', function(msg){
+		console.log('stop message: ' + msg);
+		socket.broadcast.emit('stop',msg);
+  });
+  	socket.on('send', function(msg){
+		console.log('haha message: ' + msg);
+		socket.broadcast.emit('send',msg);
+  });
+});
+
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
+    
+
+
+
+
+
+/*
 var express = require('express'),
 	app = express(),
 	port = process.env.PORT || 8080;
@@ -19,7 +58,7 @@ var io = socket.listen(express);
 //neu
 
 //var shell = require('shelljs');
-
+/*
 
 var express = require('express');
 var app = express();
@@ -97,7 +136,7 @@ console.log('Server running at http://localhost:8080/');
 var io = socket.listen(server);
 
 
-*/
+
 
 //var http = require("http")
 var ws = require("nodejs-websocket")
@@ -124,4 +163,4 @@ function broadcast(str) {
 	server.connections.forEach(function (connection) {
 		connection.sendText(str)
 	})
-}
+}*/

@@ -71,14 +71,14 @@
 	
 </div>
 
-<div style="display: none;">
+<!--div style="display: none;"-->
 <textarea rows="10" cols="50" id="tx" height="200px"></textarea> 
  <p>Open your browser's JavaScript console to see what's happening (hit F12).</p>
-      <button onclick='sendText();'>Send Text Message</button>
+      <button onclick='add("asdf");'>Send Text Message</button>
       <button onclick='sendBinary();'>Send Binary Message</button>
 	  
-</div>
-
+<!--/div-->
+		<script src="./js/socket.io.min.js"></script>
        <script src="./js/fischerSock.js"></script>
        <script src="./js/client.js"></script>
    </body>
