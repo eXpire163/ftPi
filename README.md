@@ -35,8 +35,9 @@ Optional
 ### Software
 
 - Raspbean Wheezy (newer not tested yet)
-- NodeJS as FrontEnd Server
-- Python Autobahn as Backend Server
+- NodeJS as FrontEnd Server - eXpress
+- NodejS as Backend Server - socketIO
+- ShieldControl with Python triggered by ws
 - Websocket communication 
 - [GoJS](http://gojs.net/latest/samples/flowchart.html) for Programming UI
 - mjpg_streamer for webcam access
@@ -49,7 +50,7 @@ Optional
 
 # TODOs:
 
-- Upload the code
+- Upload the code - Working on V2
 - pray for ne licence / patent problems
 - write a guide
 - link all stuff
