@@ -1,16 +1,17 @@
-﻿from autobahn.twisted.websocket import WebSocketServerProtocol, WebSocketServerFactory
-from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
+﻿from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 import atexit
 
 class FTShield:
     maxSpeed = 204
     dir = {}
     spe = {}
-    mh = Adafruit_MotorHAT(addr=0x60)
-    debug = False
+    mh = ""
+    debug = True
+    isLive = False
 
     def __init__(self):
         atexit.register(self.turnOffMotors)
+        self.mh = Adafruit_MotorHAT(addr=0x60)
 
     def log(self,txt):
         if self.debug:
@@ -27,12 +28,15 @@ class FTShield:
             self.setSpeed(nummer,0.0)
             self.dir[nummer] = direction
             self.log('set {} {}'.format(nummer, direction))
-            self.mh.getMotor(nummer).setSpeed(0)
+            if isLive:
+                self.mh.getMotor(nummer).setSpeed(0)
+            
             if direction == 'left':
-                self.mh.getMotor(nummer).run(Adafruit_MotorHAT.FORWARD)
+                if isLive: 
+                    self.mh.getMotor(nummer).run(Adafruit_MotorHAT.FORWARD)
             else:
-                self.mh.getMotor(nummer).run(Adafruit_MotorHAT.BACKWARD)
-
+                if isLive:
+                    self.mh.getMotor(nummer).run(Adafruit_MotorHAT.BACKWARD)
         else:
             self.log('skip set {} {}'.format(nummer, direction))
 

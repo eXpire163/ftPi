@@ -51,22 +51,25 @@ function loop() {
 		setTimeout(function () {
 			updateStates();
 			loop();
-		}, 250);
+		}, 2500);
 	}
 }
 
 function updateStates() {
-	console.log("tick");
-	console.log(myDiagram.findNodeForKey(-3)["text"]);
+/*		console.log("tick");
+c	onsole.log(myDiagram.findNodeForKey(-3)["text"]);
 	console.log(myDiagram.findNodeForKey(-3)["category"]);
 	console.log(myDiagram.findNodeForKey(-3)["direction"]);
 	console.log(myDiagram.findNodeForKey(-3).data.run());
 	console.log("");
-/*	myDiagram.nodes.each(function(node) {
-          if (node.category === "input") {
-            doInput(node);
+	*/
+	myDiagram.nodes.each(function(node) {
+		
+          if (node.category === "Input") {
+            //doInput(node);
+				console.log(node.data.swposition)
           }
-    });*/
+    });
 }
 
 function start(){
@@ -196,7 +199,7 @@ function init() {
 						font : "bold 11pt Helvetica, Arial, sans-serif",
 						stroke : lightText,
 						margin : 8,
-						maxSize : new go.Size(160, NaN),
+						maxSize : new go.Size(100, NaN),
 						wrap : go.TextBlock.WrapFit
 					},
 						new go.Binding("text").makeTwoWay()),
@@ -233,6 +236,46 @@ function init() {
 			makePort("L", go.Spot.Left, true, true),
 			makePort("R", go.Spot.Right, true, true),
 			makePort("B", go.Spot.Bottom, true, false)));
+			
+	myDiagram.nodeTemplateMap.add("Input", // the default category
+		
+		$(go.Node, "Spot", nodeStyle(),
+			// the main object is a Panel that surrounds a TextBlock with a rectangular Shape
+			$(go.Panel, "Auto",
+				$(go.Shape, "Rectangle", {
+					fill : "#a00000",
+					stroke : null
+				},
+					new go.Binding("figure", "figure")),
+				$(go.Panel, "Vertical",
+					$(go.TextBlock, "Schalter", {
+						font : "bold 11pt Helvetica, Arial, sans-serif",
+						stroke : lightText,
+						margin : 8,
+						maxSize : new go.Size(100, NaN),
+						wrap : go.TextBlock.WrapFit
+					},
+						new go.Binding("text").makeTwoWay()),
+					
+					
+					$(go.TextBlock, "true", {
+							margin : 8,
+							stroke : "blue",
+							font : "bold 10px sans-serif",
+							editable : false,
+							isMultiline : false
+						},
+						new go.Binding("text", "swposition")
+					)
+				)
+			),
+			// four named ports, one on each side:
+			makePort("T", go.Spot.Top, false, true),
+			makePort("L", go.Spot.Left, true, false),
+			makePort("R", go.Spot.Right, true, false),
+			makePort("B", go.Spot.Bottom, true, false)
+		)
+	);
 
 	myDiagram.nodeTemplateMap.add("Start",
 		$(go.Node, "Spot", nodeStyle(),
@@ -381,8 +424,10 @@ function init() {
 						speed : 1.0,
 						number : 1
 					}, {
-						text : "???",
-						figure : "Diamond"
+						category : "Input",
+						text : "Schalter",
+						figure : "Diamond",
+						swposition : false
 					}, {
 						category : "End",
 						text : "End"
@@ -412,6 +457,23 @@ function save() {
 }
 function load() {
 	myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+}
+
+function setSwitch(swnumber, swposition){
+	
+	myDiagram.nodes.each(function(node) {
+		console.log(node.category)
+          if (node.category === "Input") {
+           
+			console.log(node.data)
+			myDiagram.startTransaction("shift node");
+			node.data.swposition = swposition;
+			myDiagram.commitTransaction("shift node");
+			 //doInput(node);
+          }
+    });
+	
+	
 }
 
 // add an SVG rendering of the diagram at the end of this page
