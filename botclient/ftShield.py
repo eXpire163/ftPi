@@ -7,7 +7,7 @@ class FTShield:
     spe = {}
     mh = ""
     debug = True
-    isLive = False
+    isLive = True
 
     def __init__(self):
         atexit.register(self.turnOffMotors)
