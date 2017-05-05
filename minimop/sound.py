@@ -12,11 +12,12 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
+    pygame.mixer.music.load("fx/SciFiRobotSound.wav")
+    pygame.mixer.music.play()
 
 
 pygame.mixer.init()
-pygame.mixer.music.load("./fx/SciFiRobotSound.wav")
-pygame.mixer.music.play()
+
 #while pygame.mixer.music.get_busy() == True:
 #    continue
 
