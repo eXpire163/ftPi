@@ -15,7 +15,7 @@ def on_message(client, userdata, msg):
 
 
 pygame.mixer.init()
-pygame.mixer.music.load("./fx/myFile.wav")
+pygame.mixer.music.load("./fx/SciFiRobotSound.wav")
 pygame.mixer.music.play()
 #while pygame.mixer.music.get_busy() == True:
 #    continue
