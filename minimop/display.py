@@ -24,7 +24,7 @@ def aktuelleZeit(werta, wertb):
 
 def updateText(topic, payload):
     draw.rectangle((0,0,width,height), outline=0, fill=0) #Display leeren
-    displayTime = aktuelleZeit("time", "date") # bei Abfrage "date","time" ändert die Reihenfolge der Ausgabe
+    displayTime = aktuelleZeit("time", "date") # bei Abfrage "date","time" aendert die Reihenfolge der Ausgabe
     draw.text((x, top), topic , font=font, fill=255)
     draw.text((x, top+20), payload, font=font_c, fill=255)
     draw.line((x, top+45, x+width, top+45), fill=255)
