@@ -51,7 +51,7 @@ def on_message(client, userdata, msg):
 width = 128 #disp.width
 height = 64 #disp.height
 # font = ImageFont.load_default() # Wenn keine eigene Schrift vorhanden ist!!!! 
-font = ImageFont.truetype("font/verdana.ttf", 12) # Schriftart, Schriftgröße
+font = ImageFont.truetype("font/verdana.ttf", 12) # Schriftart, Schriftgroeße
 font_b = ImageFont.truetype("font/verdana.ttf", 18)
 font_c = ImageFont.truetype("font/verdana.ttf", 14)
 
