@@ -22,6 +22,17 @@ def aktuelleZeit(werta, wertb):
         ermittelteZeit = zeitpunktMessung
     return ermittelteZeit
 
+def updateText(topic, payload):
+    draw.rectangle((0,0,width,height), outline=0, fill=0) #Display leeren
+    displayTime = aktuelleZeit("time", "date") # bei Abfrage "date","time" ändert die Reihenfolge der Ausgabe
+    draw.text((x, top), topic , font=font, fill=255)
+    draw.text((x, top+20), payload, font=font_c, fill=255)
+    draw.line((x, top+45, x+width, top+45), fill=255)
+    draw.text((x, top+50), displayTime, font=font, fill=255)
+    #image.show()
+    disp.image(image)
+    disp.display()
+
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
@@ -33,6 +44,7 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
+    updateText(msg.topic, msg.payload)
 
 
 
@@ -47,7 +59,6 @@ top = padding
 bottom = height-padding
 x = padding
 draw.text((x, top+25), 'Hello', font=font_b, fill=255)
-Display image.
 disp.image(image)
 disp.display()
 
