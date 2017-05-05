@@ -37,27 +37,29 @@
   <button onclick="load()">Load</button>
   <button id="bStart" onclick="start()">Start</button>
   <button id="bStop" onclick="stop()">Stop</button>
+   <button id="bStop" onclick="setSwitch(1,true)">true</button>
+   <button id="bStop" onclick="setSwitch(1,false)">false</button>
   
   
   
-  <textarea id="mySavedModel" style="width:100%;height:200px">
+  <textarea id="mySavedModel" style="width:100%;height:300px">
       { "class": "go.GraphLinksModel",
-      "linkFromPortIdProperty": "fromPort",
-      "linkToPortIdProperty": "toPort",
-      "nodeDataArray": [
-      {"key":-1, "category":"Start", "loc":"-1453.999999999999 -698.0000000000003", "text":"Start", "active2":0},
-      {"key":-2, "category":"End", "loc":"-1101 -278.99999999999983", "text":"Enjoy!", "active2":0},
-      {"category":"Motor", "direction":"left", "speed":1, "number":1, "active2":0, "key":-3, "loc":"-1283.8833312988281 -590.883331298828"},
-      {"category":"Motor", "direction":"left", "speed":1, "number":"2", "key":-5, "loc":"-1394.9999999999995 -400"},
-      {"text":"Schalter", "category":"Switch", "number":"1", "key":-7, "loc":"-1278 -479"}
-      ],
-      "linkDataArray": [
-      {"from":-1, "to":-3, "fromPort":"B", "toPort":"T", "points":[-1453.999999999999,-672.7906976744189,-1453.999999999999,-662.7906976744189,-1453.999999999999,-656.3870144866235,-1283.8833312988281,-656.3870144866235,-1283.8833312988281,-649.983331298828,-1283.8833312988281,-639.983331298828]},
-      {"from":-5, "to":-2, "fromPort":"B", "toPort":"T", "points":[-1395,-350.90000000000003,-1395,-340.90000000000003,-1395,-331.55174418604634,-1101.0000000000002,-331.55174418604634,-1101.0000000000002,-322.2034883720927,-1101.0000000000002,-312.2034883720927]},
-      {"from":-3, "to":-7, "fromPort":"B", "toPort":"T", "points":[-1283.8833312988281,-541.783331298828,-1283.8833312988281,-531.783331298828,-1280.941665649414,-531.783331298828,-1280.941665649414,-532.4,-1278,-532.4,-1278,-522.4]},
-      {"from":-7, "to":-2, "fromPort":"R", "toPort":"T", "points":[-1219.5,-479,-1209.5,-479,-1101,-479,-1101,-400.6017441860464,-1101,-322.20348837209286,-1101,-312.20348837209286]},
-      {"from":-7, "to":-5, "fromPort":"L", "toPort":"T", "points":[-1336.5,-479,-1346.5,-479,-1394.9999999999995,-479,-1394.9999999999995,-469.05,-1394.9999999999995,-459.1,-1394.9999999999995,-449.1]}
-      ]}
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [ 
+{"key":-1, "category":"Start", "loc":"-1453.999999999999 -698.0000000000003", "text":"Start", "active2":0},
+{"key":-2, "category":"End", "loc":"-1101 -278.99999999999983", "text":"Enjoy!", "active2":0},
+{"category":"Motor", "direction":"left", "speed":1, "number":1, "active2":0, "key":-3, "loc":"-1283.8833312988281 -590.883331298828"},
+{"category":"Motor", "direction":"left", "speed":1, "number":"2", "key":-5, "loc":"-1394.9999999999995 -400"},
+{"category":"Input", "text":"Schalter", "figure":"Diamond", "key":-6, "loc":"-1162 -489"}
+ ],
+  "linkDataArray": [ 
+{"from":-1, "to":-3, "fromPort":"B", "toPort":"T", "points":[-1453.999999999999,-672.7906976744189,-1453.999999999999,-662.7906976744189,-1453.999999999999,-656.3870144866235,-1283.8833312988281,-656.3870144866235,-1283.8833312988281,-649.983331298828,-1283.8833312988281,-639.983331298828]},
+{"from":-5, "to":-2, "fromPort":"B", "toPort":"T", "points":[-1395,-350.90000000000003,-1395,-340.90000000000003,-1395,-331.55174418604634,-1101.0000000000002,-331.55174418604634,-1101.0000000000002,-322.2034883720927,-1101.0000000000002,-312.2034883720927]},
+{"from":-3, "to":-6, "fromPort":"B", "toPort":"T", "points":[-1283.8833312988281,-522.983331298828,-1283.8833312988281,-512.983331298828,-1245.691665649414,-512.983331298828,-1245.691665649414,-634.3,-1162,-634.3,-1162,-624.3]},
+{"from":-6, "to":-5, "fromPort":"L", "toPort":"T", "visible":true, "points":[-1236.5,-488.99999999999994,-1246.5,-488.99999999999994,-1394.9999999999995,-488.99999999999994,-1394.9999999999995,-483.44999999999993,-1394.9999999999995,-477.9,-1394.9999999999995,-467.9]},
+{"from":-6, "to":-2, "fromPort":"R", "toPort":"T", "visible":true, "points":[-1087.5,-488.99999999999994,-1077.5,-488.99999999999994,-1077.5,-333.9517441860464,-1101,-333.9517441860464,-1101,-322.20348837209286,-1101,-312.20348837209286]}
+ ]}
 
   </textarea>
   <p>Click the button below to render the current GoJS Diagram into SVG at one-half scale.
@@ -66,9 +68,10 @@
   <button onclick="makeSVG()">Render as SVG</button>
   <div id="SVGArea"></div>
 </div>
-     <script src="js/fischerSock.js"></script>
+	<script src="./js/socket.io.min.js"></script>
+    <script src="js/fischerSock.js"></script>
+	<script src="js/go-debug.js"></script>  <!-- use go.js when deploying -->
+	<script src="js/ftdiagram.js"></script>
 
-  <script src="js/go-debug.js"></script>  <!-- use go.js when deploying -->
- <script src="js/ftdiagram.js"></script>
- </body>
+	</body>
  </html>
