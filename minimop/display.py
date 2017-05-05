@@ -50,6 +50,11 @@ def on_message(client, userdata, msg):
 
 width = 128 #disp.width
 height = 64 #disp.height
+# font = ImageFont.load_default() # Wenn keine eigene Schrift vorhanden ist!!!! 
+font = ImageFont.truetype("font/verdana.ttf", 12) # Schriftart, Schriftgröße
+font_b = ImageFont.truetype("font/verdana.ttf", 18)
+font_c = ImageFont.truetype("font/verdana.ttf", 14)
+
 image = Image.new('1', (width, height))
 draw = ImageDraw.Draw(image)
 draw.rectangle((0,0,width,height), outline=0, fill=0)
