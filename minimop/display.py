@@ -48,8 +48,21 @@ def on_message(client, userdata, msg):
 
 
 
-width = 128 #disp.width
-height = 64 #disp.height
+# Raspberry Pi pin configuration:
+RST = 24
+ 
+# Display 128x64 display with hardware I2C:
+disp = Adafruit_SSD1306.SSD1306_128_64(rst=RST)
+ 
+# Initialize library.
+disp.begin()
+ 
+# Clear display.
+disp.clear()
+disp.display()
+
+width = disp.width
+height = disp.height
 # font = ImageFont.load_default() # Wenn keine eigene Schrift vorhanden ist!!!! 
 font = ImageFont.truetype("fonts/VERDANAB.TTF", 12) # Schriftart, Schriftgroesse
 font_b = ImageFont.truetype("fonts/VERDANAB.TTF", 18)
