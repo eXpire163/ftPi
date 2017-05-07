@@ -1,5 +1,6 @@
 sudo pip install Pillow
 sudo pip install paho-mqtt
+sudo pip install gTTS
 
 
 sudo apt-get install git

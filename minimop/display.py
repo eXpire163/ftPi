@@ -4,6 +4,9 @@ from PIL import Image, ImageDraw, ImageFont
 import Adafruit_SSD1306
 
 
+def printme(text)
+    print("DISPLAY: "+text)
+
 def aktuelleZeit(werta, wertb):
     zeitpunktMessung = time.localtime()
     jahr, monat, tag = zeitpunktMessung[0:3]
@@ -35,7 +38,7 @@ def updateText(topic, payload):
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
+    printme("Connected with result code "+str(rc))
 
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
@@ -43,7 +46,7 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
+    printme(msg.topic+" "+str(msg.payload))
     updateText(msg.topic, msg.payload)
 
 
@@ -77,6 +80,7 @@ top = padding
 bottom = height-padding
 x = padding
 draw.text((x, top+25), 'Hello', font=font_b, fill=255)
+printme("Display splash screen")
 disp.image(image)
 disp.display()
 
