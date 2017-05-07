@@ -11,6 +11,22 @@ b) keep the face in diastance range 2
 
 x) emotion detection to clone the moode
 
+
+# Commands
+
+## Sound
+
+### minimop/sound
+
+#### text to speech:
+topic: tts
+payload: text to output
+
+#### play sound file
+topic: wav
+payload: filename
+
+
 #Techs
 
 ## MQTT

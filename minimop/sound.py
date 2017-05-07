@@ -24,9 +24,14 @@ def on_message(client, userdata, msg):
         pygame.mixer.music.play()
         printme("close temp")
         f.close()
+    elif (msg.topic =="wav"):
+        if(os.path.isfile("fx/"+msg.payload)): 
+            pygame.mixer.music.load("fx/"+msg.payload)
+            pygame.mixer.music.play()
     else:
-        pygame.mixer.music.load("fx/SciFiRobotSound.wav")
-        pygame.mixer.music.play()
+        if(os.path.isfile("fx/SciFiRobotSound.wav"):
+            pygame.mixer.music.load("fx/SciFiRobotSound.wav")
+            pygame.mixer.music.play()
 
     
 
