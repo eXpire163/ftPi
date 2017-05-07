@@ -1,11 +1,17 @@
 import cv2
 import sys
 import paho.mqtt.client as mqtt
+import time
+import json
 
-def printme(text)
+def printme(text):
     print("VIDEO: "+text)
 
+client = mqtt.Client()
 
+client.connect("localhost", 1883, 60)
+
+#client.loop_start()
 
 cascPath = sys.argv[1]
 faceCascade = cv2.CascadeClassifier(cascPath)
@@ -25,16 +31,18 @@ while True:
         minSize=(30, 30),
         flags=cv2.cv.CV_HAAR_SCALE_IMAGE
     )
+    facesString = json.dumps(faces)
+    print(facesString)
+    client.publish("minimop/faces", facesString)
 
     # Draw a rectangle around the faces
-    for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+#    for (x, y, w, h) in faces:
+#        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
     # Display the resulting frame
-    cv2.imshow('Video', frame)
+#    cv2.imshow('Video', frame)
+    time.sleep( 5 )
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
 
 # When everything is done, release the capture
 video_capture.release()

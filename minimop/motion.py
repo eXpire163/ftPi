@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 
-def printme(text)
+def printme(text):
     print("MOTION: "+text)
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -12,7 +12,7 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    printme(msg.topic+" "+str(msg.payload))
+    print(msg.topic+" "+str(msg.payload))
 
 client = mqtt.Client()
 client.on_connect = on_connect

@@ -4,7 +4,7 @@ from gtts import gTTS
 from tempfile import TemporaryFile
 
 
-def printme(text)
+def printme(text):
     print("SOUND: "+text)
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):

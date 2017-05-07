@@ -1,5 +1,5 @@
 # warning !!!! this is just a test
-
+# guide from https://tutorials-raspberrypi.de/opencv-auf-dem-raspberry-pi-installieren/
 
 sudo apt-get install build-essential -y
 sudo apt-get install git -y
@@ -34,7 +34,8 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
  -D OPENCV_EXTRA_MODULES_PATH=opencv_contrib/modules \
  -D BUILD_EXAMPLES=ON ..
  
-make
+echo "logging to ~/makelog.log (tail -f for access)"
+make > ~/makelog.log
 
 
 #sudo make install && sudo ldconfig

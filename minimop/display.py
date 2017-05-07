@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw, ImageFont
 import Adafruit_SSD1306
 
 
-def printme(text)
+def printme(text):
     print("DISPLAY: "+text)
 
 def aktuelleZeit(werta, wertb):
