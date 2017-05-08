@@ -25,7 +25,6 @@ def on_message(client, userdata, msg):
         printme("close temp")
         f.close()
     elif (msg.topic =="wav"):
-
         if(os.path.isfile("fx/"+msg.payload)): 
             pygame.mixer.music.load("fx/"+msg.payload)
             pygame.mixer.music.play()
