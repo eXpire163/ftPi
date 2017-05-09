@@ -70,6 +70,7 @@ def on_message(client, userdata, msg):
         updateImage(msg.payload)
     elif(msg.topic=="minimop/display/folder"):
         filelist = os.listdir(msg.payload)
+        filelist.sort()
         for file in filelist:
             if file.endswith(".bmp"):
                 printme(os.path.join("file: ", file))
