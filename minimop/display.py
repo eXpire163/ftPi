@@ -49,7 +49,8 @@ def updateImage(imagepath):
     #for x in range(width):
     #    for y in range(height):
     #            disp.draw_pixel(x,y,bool(int(image_bw.getpixel((x,y)))))
-    disp.image(image)
+    image2 = image.convert("1")
+    disp.image(image2)
     disp.display()
 
 
