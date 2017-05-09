@@ -67,7 +67,7 @@ def on_message(client, userdata, msg):
     if(msg.topic=="minimop/display/image"):
         printme("slide");
         updateImage(msg.payload)
-    elif(msg.top="minimop/display/folder"):
+    elif(msg.top=="minimop/display/folder"):
         for file in os.listdir(msg.payload):
             if file.endswith(".bmp"):
                 printme(os.path.join("file: ", file))
