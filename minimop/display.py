@@ -38,8 +38,8 @@ def updateText(topic, payload):
 
 def updateImage(imagepath):
     image = Image.open(imagepath)
-    image_r = image.resize((width,height), Image.BICUBIC)
-    image_bw = image_r.convert("1")
+    #image_r = image.resize((width,height), Image.BICUBIC)
+    #image_bw = image_r.convert("1")
  
     # Finally this bit maps each pixel (depending on whether it is black or white) to the display.
     # Note here we are not using the text command like in previous programs. We use led.draw_pixel:
@@ -48,7 +48,7 @@ def updateImage(imagepath):
     #for x in range(width):
     #    for y in range(height):
     #            disp.draw_pixel(x,y,bool(int(image_bw.getpixel((x,y)))))
-    disp.image(image_bw)
+    disp.image(image)
     disp.display()
 
 
@@ -106,7 +106,7 @@ printme("Display splash screen")
 disp.image(image)
 disp.display()
 
-time.sleep(5)
+time.sleep(2)
 
 client = mqtt.Client()
 client.on_connect = on_connect
