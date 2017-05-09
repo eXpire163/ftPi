@@ -69,11 +69,12 @@ def on_message(client, userdata, msg):
         printme("slide");
         updateImage(msg.payload)
     elif(msg.topic=="minimop/display/folder"):
-        for file in os.listdir(msg.payload):
+        files = os.listdir(msg.payload).sort()
+        for file in files:
             if file.endswith(".bmp"):
                 printme(os.path.join("file: ", file))
                 updateImage(os.path.join(msg.payload,file))
-                time.sleep(0.025)
+                #time.sleep(0.025)
                 
     else:
         printme("no slide, "+msg.topic)
