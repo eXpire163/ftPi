@@ -63,8 +63,10 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     printme(msg.topic+" "+str(msg.payload))
     if(msg.topic=="slide"):
+        printme("slide");
         updateImage(msg.payload)
     else:
+        printme("no slide, "+msg.topic)
         updateText(msg.topic, msg.payload)
 
 
