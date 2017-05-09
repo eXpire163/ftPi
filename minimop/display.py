@@ -45,9 +45,10 @@ def updateImage(imagepath):
     # Note here we are not using the text command like in previous programs. We use led.draw_pixel:
     # That way we can individually address each pixel and tell it to be either on or off (on = white, off = black)
  
-    for x in range(width):
-        for y in range(height):
-                disp.draw_pixel(x,y,bool(int(image_bw.getpixel((x,y)))))
+    #for x in range(width):
+    #    for y in range(height):
+    #            disp.draw_pixel(x,y,bool(int(image_bw.getpixel((x,y)))))
+    disp.image(image_bw)
     disp.display()
 
 
