@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import os, sys, time, threading
 from PIL import Image, ImageDraw, ImageFont
 import Adafruit_SSD1306
+import atexit
 
 
 def printme(text):
@@ -70,6 +71,10 @@ def on_message(client, userdata, msg):
         printme("no slide, "+msg.topic)
         updateText(msg.topic, msg.payload)
 
+def turnOffDisp():
+    disp.clear()
+    disp.display()
+
 
 
 
@@ -85,6 +90,8 @@ disp.begin()
 # Clear display.
 disp.clear()
 disp.display()
+
+atexit.register(turnOffDisp)
 
 width = disp.width
 height = disp.height
