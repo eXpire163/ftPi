@@ -36,6 +36,21 @@ def updateText(topic, payload):
     disp.image(image)
     disp.display()
 
+def updateImage(imagepath):
+    image = Image.open(imagepath)
+    image_r = image.resize((width,height), Image.BICUBIC)
+    image_bw = image_r.convert("1")
+ 
+    # Finally this bit maps each pixel (depending on whether it is black or white) to the display.
+    # Note here we are not using the text command like in previous programs. We use led.draw_pixel:
+    # That way we can individually address each pixel and tell it to be either on or off (on = white, off = black)
+ 
+    for x in range(width):
+        for y in range(height):
+                led.draw_pixel(x,y,bool(int(image_bw.getpixel((x,y)))))
+    led.display()
+
+
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
     printme("Connected with result code "+str(rc))
@@ -47,7 +62,11 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     printme(msg.topic+" "+str(msg.payload))
-    updateText(msg.topic, msg.payload)
+    if(msg.topic=="slide"):
+        updateImage(msg.payload)
+    else:
+        updateText(msg.topic, msg.payload)
+
 
 
 
