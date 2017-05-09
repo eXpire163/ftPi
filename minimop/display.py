@@ -47,8 +47,8 @@ def updateImage(imagepath):
  
     for x in range(width):
         for y in range(height):
-                led.draw_pixel(x,y,bool(int(image_bw.getpixel((x,y)))))
-    led.display()
+                disp.draw_pixel(x,y,bool(int(image_bw.getpixel((x,y)))))
+    disp.display()
 
 
 # The callback for when the client receives a CONNACK response from the server.
