@@ -32,8 +32,8 @@ while True:
         flags=cv2.cv.CV_HAAR_SCALE_IMAGE
     )
     facesString = json.dumps(faces)
-    print(facesString)
-    client.publish("minimop/faces", facesString)
+    printme(facesString)
+    client.publish("minimop/video/faces", facesString)
 
     # Draw a rectangle around the faces
 #    for (x, y, w, h) in faces:
