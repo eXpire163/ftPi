@@ -49,7 +49,11 @@ def updateImage(imagepath):
     #for x in range(width):
     #    for y in range(height):
     #            disp.draw_pixel(x,y,bool(int(image_bw.getpixel((x,y)))))
-    image2 = image.convert("1")
+    if(image.mode != "1"):
+        image2 = image.convert("1")
+        image2.save(imagepath, "BMP")
+        printme("Converted and saved "+imagepath)
+
     disp.image(image2)
     disp.display()
 
@@ -76,7 +80,14 @@ def on_message(client, userdata, msg):
                 printme(os.path.join("file: ", file))
                 updateImage(os.path.join(msg.payload,file))
                 #time.sleep(0.025)
-                
+    elif(msg.topic=="minimop/display/drawtest"):
+        for x in range(width-1):
+            image = Image.new('1', (width, height))
+            draw = ImageDraw.Draw(image)
+            draw.line((x , 0) + (x, height-1), fill=255)
+            disp.image(image)
+            disp.display()
+        
     else:
         printme("no slide, "+msg.topic)
         updateText(msg.topic, msg.payload)
@@ -85,7 +96,22 @@ def turnOffDisp():
     disp.clear()
     disp.display()
 
+def showSplash():
+    printme("Display splash screen")
+    image = Image.new('1', (width, height))
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((0,0,width,height), outline=0, fill=0)
+    padding = 2
+    shape_width = 20
+    top = padding
+    bottom = height-padding
+    x = padding
+    draw.text((x, top+25), 'Hello', font=font_b, fill=255)
+    disp.image(image)
+    disp.display()
+    time.sleep(2)
 
+    
 
 
 # Raspberry Pi pin configuration:
@@ -110,20 +136,6 @@ font = ImageFont.truetype("fonts/VERDANAB.TTF", 12) # Schriftart, Schriftgroesse
 font_b = ImageFont.truetype("fonts/VERDANAB.TTF", 18)
 font_c = ImageFont.truetype("fonts/VERDANAB.TTF", 14)
 
-image = Image.new('1', (width, height))
-draw = ImageDraw.Draw(image)
-draw.rectangle((0,0,width,height), outline=0, fill=0)
-padding = 2
-shape_width = 20
-top = padding
-bottom = height-padding
-x = padding
-draw.text((x, top+25), 'Hello', font=font_b, fill=255)
-printme("Display splash screen")
-disp.image(image)
-disp.display()
-
-time.sleep(2)
 
 client = mqtt.Client()
 client.on_connect = on_connect
