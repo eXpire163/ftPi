@@ -31,7 +31,7 @@ x) emotion detection to clone the moode
 | Use | Topic | Payload | Description |
 | --- | --- | --- | --- |
 | Video | minimop/faces | {faces} | recognised faces in the webcamimage |
-| Sensor | minimop/sensor/switch" | data, GPIO.input(data) | publish switch changes |
+| Sensor | minimop/sensor/switch | data, GPIO.input(data) | publish switch changes |
 
 
 
