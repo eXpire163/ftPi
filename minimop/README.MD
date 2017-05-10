@@ -18,13 +18,14 @@ x) emotion detection to clone the moode
 
 
 
-Use | Topic | Payload | Description
-Sound | minimop/sound/tts | string | Converts string to speach and plays it
-Sound | minimop/sound/wav | filepath | Plays the specivied output file
-Display | minimop/display/image | filepath | Show image in oled
-Display | minimop/display/folder | folder | folder with bmp files that all are going to be displayed from a-z
-Display | minimop/display/drawtest | - | just a test for drawing and speedtest
-Display | minimop/display/# | string | text to display (adds date and topic by default 
+| Use | Topic | Payload | Description |
+| Sound | minimop/sound/tts | string | Converts string to speach and plays it |
+| Sound | minimop/sound/wav | filepath | Plays the specivied output file |
+| Display | minimop/display/image | filepath | Show image in oled |
+| Display | minimop/display/folder | folder | folder with bmp files that all are going to be displayed from a-z |
+| Display | minimop/display/drawtest | - | just a test for drawing and speedtest |
+| Display | minimop/display/# | string | text to display (adds date and topic by default  |
+
 
 
 #Techs
