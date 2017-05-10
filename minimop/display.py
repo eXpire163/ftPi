@@ -56,7 +56,7 @@ def updateImage(imagepath):
         printme("Converted and saved "+imagepath)
         disp.image(image2)
     else:
-        disp.image(inage)
+        disp.image(image)
 
     
     disp.display()
@@ -151,6 +151,7 @@ font = ImageFont.truetype("fonts/VERDANAB.TTF", 12) # Schriftart, Schriftgroesse
 font_b = ImageFont.truetype("fonts/VERDANAB.TTF", 18)
 font_c = ImageFont.truetype("fonts/VERDANAB.TTF", 14)
 
+showSplash()
 
 client = mqtt.Client()
 client.on_connect = on_connect
