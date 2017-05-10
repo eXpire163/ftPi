@@ -85,17 +85,23 @@ def on_message(client, userdata, msg):
                 updateImage(os.path.join(msg.payload,file))
                 #time.sleep(0.025)
     elif(msg.topic=="minimop/display/drawtest"):
-        for x in range(width-1):
+        totaltime=datetime.datetime.now()-datetime.datetime.now();
+        for x in range(width-3):
             a = datetime.datetime.now()
             image = Image.new('1', (width, height))
             draw = ImageDraw.Draw(image)
-            draw.line((x , 0) + (x, height-1), fill=255)
+            draw.line((x , 0) + (x, height-1), fill=80)
+            draw.line((x+1 , 0) + (x, height-1), fill=160)
+            draw.line((x+2 , 0) + (x, height-1), fill=255)
+            
             b = datetime.datetime.now()
             disp.image(image)
             c = datetime.datetime.now()
             disp.display()
             d = datetime.datetime.now()
-            printme("ba {} cb{} dc{}".format(b-a,c-b,d-c))
+            printme("ba {} cb {} dc {} total {}".format(b-a,c-b,d-c, d-a))
+            totaltime+=(d-a)
+        printme("total time = {}".format(totaltime))
         
     else:
         printme("no slide, "+msg.topic)
