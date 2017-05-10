@@ -19,6 +19,7 @@ x) emotion detection to clone the moode
 
 
 | Use | Topic | Payload | Description |
+| --- | --- | --- | --- |
 | Sound | minimop/sound/tts | string | Converts string to speach and plays it |
 | Sound | minimop/sound/wav | filepath | Plays the specivied output file |
 | Display | minimop/display/image | filepath | Show image in oled |
