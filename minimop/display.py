@@ -1,8 +1,9 @@
 import paho.mqtt.client as mqtt
-import os, sys, time, threading
+import os, sys, time, threading, datetime
 from PIL import Image, ImageDraw, ImageFont
 import Adafruit_SSD1306
 import atexit
+
 
 
 def printme(text):
@@ -53,8 +54,11 @@ def updateImage(imagepath):
         image2 = image.convert("1")
         image2.save(imagepath, "BMP")
         printme("Converted and saved "+imagepath)
+        disp.image(image2)
+    else:
+        disp.image(inage)
 
-    disp.image(image2)
+    
     disp.display()
 
 
@@ -82,11 +86,16 @@ def on_message(client, userdata, msg):
                 #time.sleep(0.025)
     elif(msg.topic=="minimop/display/drawtest"):
         for x in range(width-1):
+            a = datetime.datetime.now()
             image = Image.new('1', (width, height))
             draw = ImageDraw.Draw(image)
             draw.line((x , 0) + (x, height-1), fill=255)
+            b = datetime.datetime.now()
             disp.image(image)
+            c = datetime.datetime.now()
             disp.display()
+            d = datetime.datetime.now()
+            printme("ba {} cb{} dc{}".format(b-a,c-b,d-c))
         
     else:
         printme("no slide, "+msg.topic)
