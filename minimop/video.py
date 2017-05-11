@@ -13,7 +13,7 @@ client.connect("localhost", 1883, 60)
 
 #client.loop_start()
 
-cascPath = sys.argv[1]
+cascPath = "lib/haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 
 video_capture = cv2.VideoCapture(0)
