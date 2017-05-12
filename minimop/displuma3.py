@@ -1,5 +1,6 @@
 from luma.core.interface.serial import i2c, spi
 from luma.oled.device import ssd1306
+import time
 
 import sys
 import random
@@ -20,7 +21,7 @@ def main(num_iterations=sys.maxsize):
             for x in range(width-1):
                 c.rectangle(device.bounding_box, outline="white", fill="black")
                 c.line((x , 0) + (x, height-1), fill="white")
-                print x
+                time.sleep(1000/25)
                 
 
 if __name__ == '__main__':
