@@ -19,7 +19,7 @@ def main(num_iterations=sys.maxsize):
         with canvas as c:
             for x in range(width-1):
                 c.rectangle(device.bounding_box, outline="white", fill="black")
-                canvas.line((x , 0) + (x, height-1), fill=255)
+                c.line((x , 0) + (x, height-1), fill=255)
                 
 
 if __name__ == '__main__':
