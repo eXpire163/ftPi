@@ -21,7 +21,7 @@ def main(num_iterations=sys.maxsize):
             for x in range(width-1):
                 c.rectangle(device.bounding_box, outline="white", fill="black")
                 c.line((x , 0) + (x, height-1), fill="white")
-                time.sleep(1/25)
+                time.sleep(0.04)
                 
 
 if __name__ == '__main__':
