@@ -13,6 +13,9 @@ import io
 import sys
 import time
 import threading
+from luma.core.interface.serial import i2c, spi
+from luma.oled.device import ssd1306
+
 
 from PIL import Image
 
