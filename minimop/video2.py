@@ -30,11 +30,7 @@ while True:
         scaleFactor=1.1,
         minNeighbors=5,
         minSize=(30, 30),
-<<<<<<< HEAD
         flags=cv2.CASCADE_SCALE_IMAGE
-=======
-        flags=cv2.CV_HAAR_SCALE_IMAGE
->>>>>>> 111978bbb43a963b163f6cfbcdc2f680b3b46cf8
     )
     printme("make json")
     facesString = json.dumps(faces)
