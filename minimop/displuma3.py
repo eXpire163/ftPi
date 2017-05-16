@@ -12,7 +12,7 @@ from luma.core.sprite_system import framerate_regulator
 
 
 
-def main(num_iterations=sys.maxsize):
+def main():
     canvas = luma.core.render.canvas(device)
     width=128
     height=64
@@ -21,7 +21,9 @@ def main(num_iterations=sys.maxsize):
             for x in range(width-1):
                 c.rectangle(device.bounding_box, outline="white", fill="black")
                 c.line((x , 0) + (x, height-1), fill="white")
-                time.sleep(0.04)
+                print("drawline {}".format(x))
+                time.sleep(1)
+                
                 
 
 if __name__ == '__main__':
