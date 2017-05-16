@@ -1,7 +1,7 @@
 from luma.core.interface.serial import i2c, spi
 from luma.oled.device import ssd1306
-import time
 
+import time
 import sys
 import random
 
@@ -14,17 +14,30 @@ from luma.core.sprite_system import framerate_regulator
 
 def main():
     canvas = luma.core.render.canvas(device)
-    width=128
-    height=64
+    width=127
+    height=63
+    
+    regulator = framerate_regulator(fps=0)
+    
+    frame_count = 0
+    fps = ""
+    
+    
     while True:
-        with canvas as c:
+        with regulator:
             for x in range(width-1):
-                c.rectangle(device.bounding_box, outline="white", fill="black")
-                c.line((x , 0) + (x, height-1), fill="white")
-                print("drawline {}".format(x))
-                time.sleep(1)
+                with canvas as c:
+                    frame_count += 1
+                    c.rectangle(device.bounding_box, outline="white", fill="black")
+                    print(device.bounding_box)
+                    c.line((x , 0) + (x, height-1), fill="red")
+                    #c.ellipse((x+5, 15, x+15, 25), fill="red")
+                    print("drawline {}".format(x))
+                    c.text((2, 0), fps, fill="white")
+                    #time.sleep(1)
                 
-                
+                if frame_count % 20 == 0:
+                    fps = "FPS: {0:0.3f}".format(regulator.effective_FPS())
 
 if __name__ == '__main__':
     try:
