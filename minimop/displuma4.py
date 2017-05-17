@@ -3,6 +3,7 @@ import random
 
 import time
 
+
 #from demo_opts import get_device
 
 import luma.core.render
@@ -14,61 +15,7 @@ try:
     testenv = False
 except ImportError:
     testenv = True
-    
 
-
-
-class Eyes(object):
-    def __init__(self):
-        self.resetVars()
-        self._starttime = 0
-        self._duration = 0
-        self._actionstep = 0
-        self._action = "non"
-
-    def resetVars(self):
-        self._x = 64
-        self._y = 20
-        self._space = 5
-        self._color = "white"
-
-        self._w_left = 24
-        self._h_left = 24
-        self._x_left = self._x - self._w - self._space
-        self._y_left = self._y
-
-        self._w_right = 24
-        self._h_right = 24
-        self._x_right = self._x + self._space
-        self._y_right = self._y
-
-    def setAction(self, action, duration):
-        self.resetVars()
-        self._action = action
-        self._duration = duration
-        self._starttime = time.time()
-        self._actionstep = 0
-    
-
-    def update_pos(self):
-        if(self._action=="zwinkern"):
-            print(self._action)
-            if(self._actionstep == 0):
-                self._h_left-=1
-                if(self._h_left < 8):
-                    self._actionstep+=1
-            else:
-                self._h_left+=1
-                if(self._h_left >= 24):
-                    self._actionstep+=1
-                 
-            
-
-    def draw(self, canvas):
-        #left
-        canvas.rectangle((self._x_left, self._y_left, self._x_left + self._w_left, self._y_left + self._h_left), fill=self._color)
-        #right
-        canvas.rectangle((self._x_right, self._y_right, self._x_right + self._w_right, self._y_left + self._w_left), fill=self._color)
 
 
 
