@@ -1,6 +1,8 @@
 sudo pip install Pillow
 sudo pip install paho-mqtt
 sudo pip install gTTS
+sudo pip install luma.core
+sudo pip install luma.oled
 
 
 sudo apt-get install git
