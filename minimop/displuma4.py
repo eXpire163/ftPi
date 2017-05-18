@@ -1,26 +1,22 @@
-import sys
-import random
-
-import time
-
+from lib.eyes import Eyes
 
 #from demo_opts import get_device
 
-import luma.core.render
-from luma.core.sprite_system import framerate_regulator
 
 try:
-    from luma.core.interface.serial import i2c, spi
+    import luma.core.render
+    from luma.core.sprite_system import framerate_regulator
+    from luma.core.interface.serial import i2c
     from luma.oled.device import ssd1306
     testenv = False
 except ImportError:
-    from luma.emulator.device import emulator
+    #from luma.emulator.device import emulator
     testenv = True
 
 
 
 
-def main(num_iterations=sys.maxsize):
+def main():
     #colors = ["red", "orange", "yellow", "green", "blue", "magenta"]
     eyes = Eyes()
 
@@ -28,13 +24,14 @@ def main(num_iterations=sys.maxsize):
 
     frame_count = 0
     fps = ""
+    
     canvas = luma.core.render.canvas(device)
 
     regulator = framerate_regulator(fps=0)
 
-    while num_iterations > 0:
+    while True:
         with regulator:
-            num_iterations -= 1
+            
 
             frame_count += 1
             with canvas as c:
@@ -57,7 +54,8 @@ if __name__ == '__main__':
             # substitute ssd1331(...) or sh1106(...) below if using that device
             device = ssd1306(serial)
         else:
-            device = emulator(width=128, height=64, rotate=0, mode='1', transform='none', scale=6)
+            pass
+            #device = emulator(width=128, height=64, rotate=0, mode='1', transform='none', scale=6)
         
         
         main()
