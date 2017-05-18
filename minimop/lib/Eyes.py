@@ -1,4 +1,7 @@
 ﻿import time
+from lib.mathf import Mathf
+
+
 
 
 class Eyes(object):
@@ -25,25 +28,28 @@ class Eyes(object):
         self._action = action
         self._duration = duration
         self._starttime = time.time()
-        self._actionstep = 0
 
+    def get_status(self):
+        return "Current action: {}".format(self._action)
 
     def update_pos(self):
         """updates positions"""
         if self._action == "zwinkern":
             print(self._action)
-            if(self._actionstep == 0):
-                self._size_left[0] -= 1
-                if(self._size_left[1] < 8):
-                    self._actionstep += 1
-            else:
-                self._size_left[1] += 1
-                if(self._size_left[1] >= 24):
-                    self._actionstep += 1
+            self.actionzwinkern()
+
+    def actionzwinkern(self):
+        current_step = (time.time()-self._starttime)/self._duration
+        if(current_step < 0.5):
+            self._size_left[0] = Mathf.lerp(24, 8, current_step/2)
+        elif(current_step < 1):
+            self._size_left[1] = Mathf.lerp(8, 24, (current_step/2)+0.5)
+        else:
+            self.reset_vars()
+
 
     def draw(self, canvas):
         #left
         canvas.rectangle((self._pos_left, self._pos_left+self._size_left), fill=self._color)
         #right
         canvas.rectangle((self._pos_right, self._pos_right+self._size_right), fill=self._color)
-

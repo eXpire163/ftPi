@@ -2,6 +2,7 @@ import paho.mqtt.client as mqtt
 import pygame
 from gtts import gTTS
 from tempfile import TemporaryFile
+import os
 
 
 def printme(text):
@@ -29,7 +30,7 @@ def on_message(client, userdata, msg):
             pygame.mixer.music.load("fx/"+msg.payload)
             pygame.mixer.music.play()
     else:
-        if(os.path.isfile("fx/SciFiRobotSound.wav"):
+        if(os.path.isfile("fx/SciFiRobotSound.wav")):
             pygame.mixer.music.load("fx/SciFiRobotSound.wav")
             pygame.mixer.music.play()
 

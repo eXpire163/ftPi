@@ -8,7 +8,7 @@ def printme(text):
 	
 def on_gpio(data):
     printme("switch,{},{}".format(data, GPIO.input(data)))
-	client.publish("minimop/sensor/switch", "{},{}".format(data, GPIO.input(data))
+	client.publish("minimop/sensor/switch", "{},{}".format(data, GPIO.input(data)))
 
 	
 def on_connect():
