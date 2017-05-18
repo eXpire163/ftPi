@@ -34,7 +34,7 @@ class Eyes(object):
 
         self._w_left = 24
         self._h_left = 24
-        self._x_left = self._x - self._w - self._space
+        self._x_left = self._x - self._w_left - self._space
         self._y_left = self._y
 
         self._w_right = 24
@@ -51,17 +51,18 @@ class Eyes(object):
     
 
     def update_pos(self):
+        print(self._action)
         if(self._action=="zwinkern"):
-            print(self._action)
             if(self._actionstep == 0):
                 self._h_left-=1
                 if(self._h_left < 8):
-                    self._actionstep+=1
-            else:
-                self._h_left+=1
+                    self._actionstep =1
+            elif(self._actionstep == 1):
+                self._h_left+=2
                 if(self._h_left >= 24):
-                    self._actionstep+=1
-                 
+                    self._actionstep = 2
+            else:
+                self._action = ""
             
 
     def draw(self, canvas):
