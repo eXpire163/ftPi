@@ -1,4 +1,4 @@
-from lib.eyes import Eyes
+from lib.Eyes import Eyes
 
 #from demo_opts import get_device
 
@@ -20,7 +20,7 @@ def main():
     #colors = ["red", "orange", "yellow", "green", "blue", "magenta"]
     eyes = Eyes()
 
-    eyes.set_action("zwinkern", 1.0)
+    eyes.set_action("blinzeln", 1.0)
 
     frame_count = 0
     fps = ""
@@ -34,6 +34,7 @@ def main():
 
             frame_count += 1
             with canvas as can:
+                can.rectangle(DEVICE.bounding_box, fill="black")
                 eyes.update_pos()
                 eyes.draw(can)
                 can.text((2, 0), fps, fill="white")
@@ -47,7 +48,6 @@ def main():
 
 if __name__ == '__main__':
     try:
-
         if(not TESTENV):
             # rev.1 users set port=0
             # substitute spi(device=0, port=0) below if using that interface
