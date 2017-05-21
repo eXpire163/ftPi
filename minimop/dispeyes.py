@@ -20,14 +20,14 @@ def main():
     #colors = ["red", "orange", "yellow", "green", "blue", "magenta"]
     eyes = Eyes()
 
-    eyes.set_action("blinzeln", 1.0)
+    eyes.set_action("blinzeln", 3.0)
 
     frame_count = 0
     fps = ""
 
     if(not TESTENV):
         canvas = luma.core.render.canvas(DEVICE)
-        regulator = framerate_regulator(fps=0)
+        regulator = framerate_regulator(fps=5)
 
     while not TESTENV:
         with regulator:
