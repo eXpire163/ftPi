@@ -1,5 +1,7 @@
-import pygame
 import sys
+import os
+import pygame
+
 
 def load_image(name):
     image = pygame.image.load(name)
@@ -9,8 +11,12 @@ class TestSprite(pygame.sprite.Sprite):
     def __init__(self):
         super(TestSprite, self).__init__()
         self.images = []
-        self.images.append(load_image('image1.png'))
-        self.images.append(load_image('image2.png'))
+        filelist = os.listdir("/git/ftPi/minimop/images/zwinkern")
+        filelist.sort()
+        for cur_file in filelist:
+            if cur_file.endswith(".bmp"):
+                self.images.append(load_image(cur_file.name))
+
         # assuming both images are 64x64 pixels
 
         self.index = 0
@@ -18,8 +24,8 @@ class TestSprite(pygame.sprite.Sprite):
         self.rect = pygame.Rect(5, 5, 64, 64)
 
     def update(self):
-        '''This method iterates through the elements inside self.images and 
-        displays the next one each tick. For a slower animation, you may want to 
+        '''This method iterates through the elements inside self.images and
+        displays the next one each tick. For a slower animation, you may want to
         consider using a timer of some sort so it updates slower.'''
         self.index += 1
         if self.index >= len(self.images):
@@ -28,7 +34,7 @@ class TestSprite(pygame.sprite.Sprite):
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((250, 250))
+    screen = pygame.display.set_mode((128, 64))
 
     my_sprite = TestSprite()
     my_group = pygame.sprite.Group(my_sprite)
