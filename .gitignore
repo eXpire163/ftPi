@@ -3,3 +3,4 @@ noderoot/node_modules/
 noderoot/server/node_modules/
 .idea/
 botclient/Adafruit-Motor-HAT-Python-Library/
+minimop/tests/__pycache__/
