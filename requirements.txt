@@ -14,11 +14,11 @@ olefile==0.44
 paho-mqtt==1.2.3
 Pillow==4.1.1
 py==1.4.33
+singledispatch==3.4.0.3
 pygame==1.9.3
 pylint==1.7.1
 pytest==3.1.0
 requests==2.13.0
-singledispatch==3.4.0.3
 six==1.10.0
 socketIO-client==0.7.2
 websocket-client==0.40.0
