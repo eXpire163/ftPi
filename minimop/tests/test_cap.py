@@ -1,6 +1,6 @@
 # test_cap.py
 import pytest
-from .context import sample
+from src import Mathf
 
 
 def capital_case(mixcase):
