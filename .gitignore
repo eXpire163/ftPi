@@ -4,3 +4,5 @@ noderoot/server/node_modules/
 .idea/
 botclient/Adafruit-Motor-HAT-Python-Library/
 minimop/tests/__pycache__/
+minimop/opencv/
+minimop/Adafruit_Python_SSD1306/
