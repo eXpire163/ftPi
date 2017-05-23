@@ -1,5 +1,7 @@
 # test_cap.py
+import pytest
 from .context import sample
+
 
 def capital_case(mixcase):
     return mixcase.capitalize()
